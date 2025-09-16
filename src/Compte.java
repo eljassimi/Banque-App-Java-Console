@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.*;
 
 public abstract class Compte {
 
@@ -7,8 +8,8 @@ public abstract class Compte {
     protected double solde;
     protected List<String> listeOperations;
 
-    public Compte(String code, double solde) {
-        this.code = code;
+    public Compte(double solde) {
+        this.code = "CTA-"+(int)(Math.random() * 10011);
         this.solde = solde;
         this.listeOperations = new ArrayList<>();
     }
