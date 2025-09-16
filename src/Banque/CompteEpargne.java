@@ -1,23 +1,21 @@
-import java.lang.*;
-import java.rmi.server.ExportException;
+package Banque;
 
-public class CompteCourant extends Compte{
+public class CompteEpargne extends Compte {
 
-    protected float decouvert;
+    protected float tauxInteret;
 
-    public CompteCourant(float decouvert, float solde) {
+    public CompteEpargne(float tauxInteret, float solde) {
         super(solde);
-        this.decouvert = decouvert;
+        this.tauxInteret = tauxInteret;
     }
 
     public float calculerInteret(){
-        return 0;
+        return solde * this.tauxInteret;
     }
 
     public  void afficherDetails(){
         System.out.println("Code du compte : "+code);
         System.out.println("Solde du compte : "+solde);
-        System.out.println("Decouvert du compte : "+this.decouvert);
         System.out.println("Les Operation d compte : ");
         if (listeOperations.isEmpty()) {
             System.out.println("Aucune opération effectuée.");
@@ -32,19 +30,8 @@ public class CompteCourant extends Compte{
         if(montant <= solde){
             solde = solde-montant;
             listeOperations.add("Montant retirer de "+montant+" Solde reste est "+solde);
-        } else if (montant > solde) {
-        if (montant <= solde + this.decouvert) {
-            float montantRetirer = montant - solde;
-            solde = 0;
-            this.decouvert -= montantRetirer;
-            listeOperations.add("Montant retire de " + montant +
-                    " | Solde restant : " + solde +
-                    " | Decouvert restant : " + this.decouvert);
         } else {
-            throw new Exception("Solde insuffisant !");
-        }
+                throw new Exception("Solde insuffisant !");
+            }
     }
-
-}
-
 }
