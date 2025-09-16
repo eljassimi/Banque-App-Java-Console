@@ -5,11 +5,11 @@ import java.lang.*;
 public abstract class Compte {
 
     protected String code;
-    protected double solde;
+    protected float solde;
     protected List<String> listeOperations;
 
-    public Compte(double solde) {
-        this.code = "CTA-"+(int)(Math.random() * 10011);
+    public Compte(float solde) {
+        this.code = "CTA-"+(int)(Math.random() * 10001);
         this.solde = solde;
         this.listeOperations = new ArrayList<>();
     }
@@ -26,6 +26,6 @@ public abstract class Compte {
 
     public abstract void calculerInteret();
     public abstract void afficherDetails();
-    public abstract void retirer(float montant);
+    public abstract void retirer(float montant)throws Exception;
 
 }
