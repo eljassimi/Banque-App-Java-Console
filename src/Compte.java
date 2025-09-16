@@ -22,4 +22,9 @@ public abstract class Compte {
     public List<String> getListeOperations() {
         return listeOperations;
     }
+
+    public abstract void calculerInteret();
+    public abstract void afficherDetails();
+    public abstract void retirer(float montant);
+
 }
