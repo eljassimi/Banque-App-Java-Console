@@ -10,8 +10,11 @@ public class CompteCourant extends Compte{
         this.decouvert = decouvert;
     }
 
-    public void calculerInteret(){};
-    public  void afficherDetails(){};
+    public float calculerInteret(){
+        return 0;
+    }
+
+    public  void afficherDetails(){}
     public  void retirer(float montant) throws Exception{
         if(montant <= solde){
             solde = solde-montant;

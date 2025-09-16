@@ -17,14 +17,14 @@ public abstract class Compte {
     public String getCode() {
         return code;
     }
-    public double getSolde() {
+    public float getSolde() {
         return solde;
     }
     public List<String> getListeOperations() {
         return listeOperations;
     }
 
-    public abstract void calculerInteret();
+    public abstract float calculerInteret();
     public abstract void afficherDetails();
     public abstract void retirer(float montant)throws Exception;
 
