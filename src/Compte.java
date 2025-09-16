@@ -12,4 +12,14 @@ public abstract class Compte {
         this.solde = solde;
         this.listeOperations = new ArrayList<>();
     }
+
+    public String getCode() {
+        return code;
+    }
+    public double getSolde() {
+        return solde;
+    }
+    public List<String> getListeOperations() {
+        return listeOperations;
+    }
 }
