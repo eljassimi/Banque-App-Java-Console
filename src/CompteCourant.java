@@ -14,7 +14,16 @@ public class CompteCourant extends Compte{
         return 0;
     }
 
-    public  void afficherDetails(){}
+    public  void afficherDetails(){
+        System.out.println("Code du compte : "+code);
+        System.out.println("Solde du compte : "+solde);
+        System.out.println("Decouvert du compte : "+this.decouvert);
+        System.out.println("Les Operation d compte : ");
+        for(String operation : listeOperations){
+            System.out.println(operation);
+        }
+    }
+
     public  void retirer(float montant) throws Exception{
         if(montant <= solde){
             solde = solde-montant;
