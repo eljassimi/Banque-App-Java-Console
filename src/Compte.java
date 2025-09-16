@@ -9,7 +9,7 @@ public abstract class Compte {
     protected List<String> listeOperations;
 
     public Compte(float solde) {
-        this.code = "CTA-"+(int)(Math.random() * 10001);
+        this.code = "CPT-" + String.format("%05d", (int)(Math.random() * 100000));
         this.solde = solde;
         this.listeOperations = new ArrayList<>();
     }

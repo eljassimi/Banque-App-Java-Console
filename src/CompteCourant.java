@@ -19,8 +19,12 @@ public class CompteCourant extends Compte{
         System.out.println("Solde du compte : "+solde);
         System.out.println("Decouvert du compte : "+this.decouvert);
         System.out.println("Les Operation d compte : ");
-        for(String operation : listeOperations){
-            System.out.println(operation);
+        if (listeOperations.isEmpty()) {
+            System.out.println("Aucune opération effectuée.");
+        } else {
+            for (String operation : listeOperations) {
+                System.out.println("- " + operation);
+            }
         }
     }
 
@@ -28,15 +32,19 @@ public class CompteCourant extends Compte{
         if(montant <= solde){
             solde = solde-montant;
             listeOperations.add("Montant retirer de "+montant+" Solde reste est "+solde);
-        }else if(montant > solde){
-            if(montant <= solde + this.decouvert) {
-                float montantRetirer = montant - solde;
-                this.decouvert = this.decouvert - montantRetirer;
-                listeOperations.add("Montant retirer de "+montant+" Solde reste est "+solde+" Decouvert est "+this.decouvert);
-            }else if (montant > solde + this.decouvert){
-                throw new Exception("Solde Insuffusant");
-            }
+        } else if (montant > solde) {
+        if (montant <= solde + this.decouvert) {
+            float montantRetirer = montant - solde;
+            solde = 0;
+            this.decouvert -= montantRetirer;
+            listeOperations.add("Montant retire de " + montant +
+                    " | Solde restant : " + solde +
+                    " | Decouvert restant : " + this.decouvert);
+        } else {
+            throw new Exception("Solde insuffisant !");
         }
     }
+
+}
 
 }
