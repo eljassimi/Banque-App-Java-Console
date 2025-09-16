@@ -4,13 +4,13 @@ import java.util.UUID;
 import java.time.LocalDate;
 
 public abstract class Operation {
-    protected UUID UUID;
+    protected UUID numero ;
     protected LocalDate date;
     protected float montant;
 
 
     public Operation(float montant) {
-        this.UUID = UUID.randomUUID();
+        this.numero  = UUID.randomUUID();
         this.date = LocalDate.now();
         this.montant = montant;
     }
