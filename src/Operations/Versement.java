@@ -7,4 +7,8 @@ public class Versement extends Operation{
         super(montant);
         this.source = source;
     }
+
+    public void afficheDetails(){
+        System.out.println("Montant versé de " + montant + " |  Source : " +  this.source);
+    }
 }

@@ -16,16 +16,6 @@ public abstract class Compte {
         this.listeOperations = new ArrayList<>();
     }
 
-    public String getCode() {
-        return code;
-    }
-    public float getSolde() {
-        return solde;
-    }
-    public List<String> getListeOperations() {
-        return listeOperations;
-    }
-
     public abstract float calculerInteret();
     public abstract void afficherDetails();
     public abstract void retirer(float montant)throws Exception;
