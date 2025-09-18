@@ -8,7 +8,6 @@ public abstract class Operation {
     protected LocalDate date;
     protected float montant;
 
-
     public Operation(float montant) {
         this.numero  = UUID.randomUUID();
         this.date = LocalDate.now();
@@ -16,5 +15,4 @@ public abstract class Operation {
     }
 
     public abstract void afficheDetails();
-
 }

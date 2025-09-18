@@ -10,6 +10,6 @@ public class Versement extends Operation{
 
     @Override
     public void afficheDetails(){
-        System.out.println("Montant versé de " + montant + " |  Source : " +  this.source);
+        System.out.println("[Versement] Montant : " + montant + " | Source : " + source + " | Date : " + date);
     }
 }

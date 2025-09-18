@@ -1,6 +1,6 @@
 package Banque;
 
-import java.lang.*;
+import Operations.Retrait;
 
 public class CompteCourant extends Compte{
 
@@ -11,41 +11,28 @@ public class CompteCourant extends Compte{
         this.decouvert = decouvert;
     }
 
+    @Override
     public float calculerInteret(){
         return 0;
     }
 
-    public  void afficherDetails(){
-        System.out.println("Code du compte : "+code);
-        System.out.println("Solde du compte : "+solde);
-        System.out.println("Decouvert du compte : "+this.decouvert);
-        System.out.println("Les Operation d compte : ");
-        if (listeOperations.isEmpty()) {
-            System.out.println("Aucune opération effectuée.");
-        } else {
-            for (String operation : listeOperations) {
-                System.out.println("- " + operation);
-            }
-        }
+    @Override
+    public void afficherDetails(){
+        System.out.println("=== Compte Courant ===");
+        System.out.println("Code : "+code);
+        System.out.println("Solde : "+solde);
+        System.out.println("Decouvert : "+decouvert);
+        System.out.println("Operations :");
+        afficherOperations();
     }
 
-    public  void retirer(float montant) throws Exception{
-        if(montant <= solde){
-            solde = solde-montant;
-            listeOperations.add("Montant retirer de "+montant+" Solde reste est "+solde);
-        } else if (montant > solde) {
-        if (montant <= solde + this.decouvert) {
-            float montantRetirer = montant - solde;
-            solde = 0;
-            this.decouvert -= montantRetirer;
-            listeOperations.add("Montant retire de " + montant +
-                    " | Solde restant : " + solde +
-                    " | Decouvert restant : " + this.decouvert);
-        } else {
-            throw new Exception("Solde insuffisant !");
+    @Override
+    public void retirer(float montant) throws Exception{
+        if(montant <= 0) throw new IllegalArgumentException("Montant doit etre positif !");
+        if(solde - montant < -decouvert){
+            throw new Exception("Solde insuffisant depasse decouvert !");
         }
+        solde -= montant;
+        listeOperations.add(new Retrait("Retrait CompteCourant", montant));
     }
-
-}
-
 }

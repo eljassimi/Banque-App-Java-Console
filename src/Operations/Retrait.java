@@ -2,7 +2,7 @@ package Operations;
 
 public class Retrait extends Operation{
 
-    protected String destination;
+    private String destination;
 
     public Retrait(String destination, float montant) {
         super(montant);
@@ -11,7 +11,6 @@ public class Retrait extends Operation{
 
     @Override
     public void afficheDetails() {
-        System.out.println("Montant Retrait de " + montant + " |  destination : " +  this.destination);
+        System.out.println("[Retrait] Montant : " + montant + " | Destination : " + destination + " | Date : " + date);
     }
-
 }
